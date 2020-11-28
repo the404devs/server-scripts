@@ -36,7 +36,7 @@ while getopts ":lspfh" opt; do
             echo "------------------------------------"
             ;;
         p)
-            echo "Updating Server plugins!"
+            echo "Updating server plugins!"
             echo "------------------------------------"
             cd ~/.minecraft-server/plugins
             echo "Updating Dynmap..."
