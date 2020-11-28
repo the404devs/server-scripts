@@ -1,5 +1,32 @@
 #!/bin/bash
-while [ 0 -ne 1 ]; do
-  xdotool mousemove 683 388 click 1 &
-  sleep 1.5
+
+if [ $# -eq 0 ]
+  then
+    echo "mcauto"
+    echo "v0.0.1 (11/28/20) - the404"
+    echo "------------------------------------"
+    echo "Please provide the name of a script to run."
+    echo "Run with -l to list all avaliable scripts."
+    exit
+fi
+
+opts=0
+while getopts ":l" opt; do
+    opts=1
+    case $opt in
+        l)
+            echo "Listing all avaliable scripts..."
+            echo "------------------------------------"
+            cd "$(dirname "$(readlink -f "$0")")/AFKSCRIPTS"
+            grep --with-filename "Description" * | sed 's/# Description://g'
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            ;;
+    esac
 done
+
+if [ $opts -eq 0 ]
+    then
+        sh "$(dirname "$(readlink -f "$0")")/AFKSCRIPTS/$1"
+fi
