@@ -1,0 +1,69 @@
+#!/bin/bash
+
+show_help() {
+    echo "mcupdate"
+    echo "v0.0.2 (11/27/20) - the404"
+    echo "------------------------------------"
+    echo "-l - Update the launcher."
+    echo "-s - Update the server."
+    echo "-p - Update the server's plugins."
+    echo "-f - Update the Faithful resource pack."
+    echo "-h - Display help."
+}
+
+opts=0
+while getopts ":lspfh" opt; do
+    opts=1
+    case $opt in
+        l)
+            echo "Updating Minecraft Launcher!"
+            echo "------------------------------------"
+            curl https://launcher.mojang.com/download/Minecraft-beta.tar.gz -o ~/.local/share/minecraft-launcher/Minecraft.tar.gz
+            cd ~/.local/share
+            tar -xzf ~/.local/share/minecraft-launcher/Minecraft.tar.gz 
+            echo "------------------------------------"
+            echo "Launcher updated successfully!"
+            echo "------------------------------------"
+            ;;
+        s)
+            echo "Updating Minecraft Server!"
+            echo "------------------------------------"
+            cd ~/.minecraft-server
+            java -jar BuildTools.jar --rev 1.16.4
+            mv spigot-1.16.4.jar server.jar
+            echo "------------------------------------"
+            echo "Server updated successfully!"
+            echo "------------------------------------"
+            ;;
+        p)
+            echo "Updating Server plugins!"
+            echo "------------------------------------"
+            cd ~/.minecraft-server/plugins
+            echo "Updating Dynmap..."
+            curl http://dynmap.us/builds/dynmap/Dynmap-HEAD-spigot.jar -o ~/.minecraft-server/plugins/Dynmap-HEAD-spigot.jar
+            echo "Updating Geyser..."
+            curl https://ci.nukkitx.com/job/GeyserMC/job/Geyser/job/master/lastSuccessfulBuild/artifact/bootstrap/spigot/target/Geyser-Spigot.jar -o ~/.minecraft-server/plugins/Geyser-Spigot.jar
+            echo "Updating Floodgate..."
+            curl https://ci.nukkitx.com/job/GeyserMC/job/Floodgate/job/master/lastSuccessfulBuild/artifact/bukkit/target/floodgate-bukkit.jar -o ~/.minecraft-server/plugins/floodgate-bukkit.jar
+            echo "------------------------------------"
+            echo "Server plugins updated successfully!"
+            echo "------------------------------------"
+            ;;
+        f)
+            echo "Updating Faithful texture pack!"
+            echo "------------------------------------"
+            cd ~/.minecraft/resourcepacks
+            curl https://raw.githubusercontent.com/FaithfulTeam/Faithful/releases/1.17.zip -o Faithful.zip
+            ;;
+        h)
+            show_help
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            ;;
+    esac
+done
+
+if ((!opts)); then
+    show_help
+fi

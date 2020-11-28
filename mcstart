@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd ~/.minecraft-server
+java -Xmx1024M -Xms1024M -XX:+UseG1GC -XX:MaxGCPauseMillis=50 -jar server.jar nogui 
