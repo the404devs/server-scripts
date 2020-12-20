@@ -1,4 +1,5 @@
 #!/bin/bash
 
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8123
 cd ~/.minecraft-server
 java -Xmx1024M -Xms1024M -XX:+UseG1GC -XX:MaxGCPauseMillis=50 -jar server.jar nogui 

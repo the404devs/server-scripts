@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Description: For the cave spider spawner on Jockcraft.
+while [ 0 -ne 1 ]; do
+  xdotool mousemove 683 388 click 1 &
+  sleep 1.5 
+done

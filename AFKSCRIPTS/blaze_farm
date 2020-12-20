@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # Description: For the blaze farm on the Jockcraft server.
+
 while [ 0 -ne 1 ]; do
+  xdotool keydown s
   xdotool keydown d &
   xdotool mousemove 683 388 click 1 &
   sleep 1.5 
