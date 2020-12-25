@@ -42,9 +42,9 @@ while getopts ":lspfh" opt; do
             echo "Updating Dynmap..."
             curl http://dynmap.us/builds/dynmap/Dynmap-HEAD-spigot.jar -o ~/.minecraft-server/plugins/Dynmap-HEAD-spigot.jar
             echo "Updating Geyser..."
-            curl https://ci.nukkitx.com/job/GeyserMC/job/Geyser/job/master/lastSuccessfulBuild/artifact/bootstrap/spigot/target/Geyser-Spigot.jar -o ~/.minecraft-server/plugins/Geyser-Spigot.jar
+            curl https://ci.opencollab.dev/job/GeyserMC/job/Geyser/job/master/lastSuccessfulBuild/artifact/bootstrap/spigot/target/Geyser-Spigot.jar -o ~/.minecraft-server/plugins/Geyser-Spigot.jar
             echo "Updating Floodgate..."
-            curl https://ci.nukkitx.com/job/GeyserMC/job/Floodgate/job/master/lastSuccessfulBuild/artifact/bukkit/target/floodgate-bukkit.jar -o ~/.minecraft-server/plugins/floodgate-bukkit.jar
+            curl https://ci.opencollab.dev/job/GeyserMC/job/Floodgate/job/master/lastSuccessfulBuild/artifact/bukkit/target/floodgate-bukkit.jar -o ~/.minecraft-server/plugins/floodgate-bukkit.jar
             echo "------------------------------------"
             echo "Server plugins updated successfully!"
             echo "------------------------------------"
