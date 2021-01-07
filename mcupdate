@@ -29,7 +29,7 @@ while getopts ":lspfh" opt; do
             echo "Updating Minecraft Server!"
             echo "------------------------------------"
             cd ~/.minecraft-server
-            java -jar BuildTools.jar --rev 1.16.4
+            java -jar BuildTools.jar --rev latest
             mv spigot-1.16.4.jar server.jar
             echo "------------------------------------"
             echo "Server updated successfully!"
